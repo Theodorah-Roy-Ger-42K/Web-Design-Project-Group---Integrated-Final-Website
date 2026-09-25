@@ -338,6 +338,14 @@ footer {
     color: #8ed1c2;
 }
 
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
 
 /* =========================================
    PHASE 5 - RESPONSIVE DESIGN
@@ -414,6 +422,22 @@ footer {
    ========================================= */
 
 @media (max-width: 480px) {
+     .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
 
     /* Header and navigation */
     header {
@@ -494,3 +518,8 @@ footer {
     }
 
 }
+
+/* =========================================
+   PHASE 6 - MOBILE NAVIGATION MENU
+   ========================================= */
+
