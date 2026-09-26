@@ -12,4 +12,8 @@ menuToggle.addEventListener("click", function () {
     const isOpen = navLinks.classList.contains("active");
 
     menuToggle.setAttribute("aria-expanded", isOpen);
+    menuToggle.setAttribute(
+    "aria-label",
+    isOpen ? "Close navigation menu" : "Open navigation menu"
+);
 });
