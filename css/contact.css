@@ -5,3 +5,6 @@ input, select, textarea { width: 100%; padding: 0.5rem; }
 :focus { outline: 3px solid #005fcc; outline-offset: 2px; }
 button { margin-top: 1rem; padding: 0.6rem 1.2rem; }#formSuccess { margin-top: 1rem; padding: 1rem; background: #e6f4ea; border: 1px solid #1e7e34; }
 #formSuccess { margin-top: 1rem; padding: 1rem; background: #e6f4ea; border: 1px solid #1e7e34; }
+/*CSS rule for errors and invalid email*/
+.error { color: #b00020; font-size: 0.9rem; }
+[aria-invalid="true"] { border: 2px solid #b00020; }
