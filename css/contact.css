@@ -8,3 +8,14 @@ button { margin-top: 1rem; padding: 0.6rem 1.2rem; }#formSuccess { margin-top: 1
 /*CSS rule for errors and invalid email*/
 .error { color: #b00020; font-size: 0.9rem; }
 [aria-invalid="true"] { border: 2px solid #b00020; }
+#contactForm input,
+#contactForm select,
+#contactForm textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+#contactForm {
+  max-width: 100%;
+}
