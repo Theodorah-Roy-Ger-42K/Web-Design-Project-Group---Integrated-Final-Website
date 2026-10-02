@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DrivePNG Rentals - Our Fleet</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/vehicles.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h2>DrivePNG Rentals</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="vehicles.html" class="active">Vehicles</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="vehicles-page">
+    <section class="vehicles-header">
+      <h1>Our Rental Fleet</h1>
+      <p>Choose your ride for Lae city or Highlands Highway</p>
+    </section>
+
+    <div class="filter-bar">
+      <button data-filter="all" class="active">All Vehicles</button>
+      <button data-filter="4x4">4x4 / Offroad</button>
+      <button data-filter="ute">Ute</button>
+      <button data-filter="suv">SUV</button>
+      <button data-filter="sedan">Sedan</button>
+    </div>
+
+    <section class="vehicle-grid">
+      
+      <article class="vehicle-card" data-category="4x4 ute">
+        <img src="images/landcruiser79.jpg" alt="Toyota Land Cruiser 79 Series Overland">
+        <div class="card-content">
+          <h3>Toyota Land Cruiser 79 Series Overland</h3>
+          <p class="type">4x4 • V8 Diesel • Rooftop Tent + 270 Awning</p>
+          <p class="price">K750 / day</p>
+          <ul>
+            <li>Equipped with rooftop tent for overnight trips</li>
+            <li>270 degree side awning for shade and rain</li>
+            <li>High ground clearance for unsealed roads</li>
+          </ul>
+          <a href="contact.html" class="btn">Book Now</a>
+        </div>
+      </article>
+
+      <article class="vehicle-card" data-category="sedan">
+        <img src="images/mark2.jpg" alt="Toyota Mark II GX100">
+        <div class="card-content">
+          <h3>Toyota Mark II GX100</h3>
+          <p class="type">Sedan • RWD • 5 Seater • Executive Class</p>
+          <p class="price">K280 / day</p>
+          <ul>
+            <li>Smooth and quiet drive for sealed roads</li>
+            <li>Spacious interior for business travel</li>
+            <li>Best suited for Lae and city runs</li>
+          </ul>
+          <a href="contact.html" class="btn">Book Now</a>
+        </div>
+      </article>
+
+      <article class="vehicle-card" data-category="ute 4x4">
+        <img src="images/raptor.jpg" alt="Ford Ranger Raptor 3.0 V6">
+        <div class="card-content">
+          <h3>Ford Ranger Raptor 3.0L V6</h3>
+          <p class="type">Ute • 4x4 • Twin-Turbo • High Performance</p>
+          <p class="price">K650 / day</p>
+          <ul>
+            <li>Powerful V6 engine with strong towing ability</li>
+            <li>Built for rough terrain and steep climbs</li>
+            <li>Sport handling with off-road suspension</li>
+          </ul>
+          <a href="contact.html" class="btn">Book Now</a>
+        </div>
+      </article>
+
+      <article class="vehicle-card" data-category="suv">
+        <img src="images/crv.jpg" alt="Honda CR-V">
+        <div class="card-content">
+          <h3>Honda CR-V</h3>
+          <p class="type">SUV • 1.5L Turbo • Automatic • 5 Seater</p>
+          <p class="price">K400 / day</p>
+          <ul>
+            <li>Reliable family SUV with good fuel economy</li>
+            <li>Comfortable cabin with modern features</li>
+            <li>Ideal for mixed city and highway driving</li>
+          </ul>
+          <a href="contact.html" class="btn">Book Now</a>
+        </div>
+      </article>
+
+      <article class="vehicle-card" data-category="ute 4x4">
+        <img src="images/hilux.jpg" alt="Toyota Hilux 4x4">
+        <div class="card-content">
+          <h3>Toyota Hilux 4x4</h3>
+          <p class="type">Ute • 4x4 • Diesel • Double Cab</p>
+          <p class="price">K450 / day</p>
+          <ul>
+            <li>Most popular pickup in PNG - parts available everywhere</li>
+            <li>Durable and capable on muddy roads</li>
+            <li>Large tray for cargo and tools</li>
+          </ul>
+          <a href="contact.html" class="btn">Book Now</a>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer><p>&copy; 2026 DrivePNG Rentals - Lae, Morobe Province</p></footer>
+  <script src="js/vehicles.js"></script>
+</body>
+</html>
