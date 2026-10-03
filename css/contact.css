@@ -1,0 +1,21 @@
+body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 1rem; }
+label { display: block; margin-top: 1rem; font-weight: bold; }
+input, select, textarea { width: 100%; padding: 0.5rem; }
+.error { color: #b00020; font-size: 0.9rem; }
+:focus { outline: 3px solid #005fcc; outline-offset: 2px; }
+button { margin-top: 1rem; padding: 0.6rem 1.2rem; }#formSuccess { margin-top: 1rem; padding: 1rem; background: #e6f4ea; border: 1px solid #1e7e34; }
+#formSuccess { margin-top: 1rem; padding: 1rem; background: #e6f4ea; border: 1px solid #1e7e34; }
+/*CSS rule for errors and invalid email*/
+.error { color: #b00020; font-size: 0.9rem; }
+[aria-invalid="true"] { border: 2px solid #b00020; }
+#contactForm input,
+#contactForm select,
+#contactForm textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+#contactForm {
+  max-width: 100%;
+}
