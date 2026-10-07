@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#123b5d">
+    <meta name="description" content="Create a DrivePNG Rentals account to explore vehicles and manage your rentals.">
+    <title>Create an Account | DrivePNG Rentals</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="../main.js" defer></script>
+    <style>
+        .register-form {
+            width: min(100%, 720px);
+            margin: 2rem auto 0;
+            padding: clamp(1.25rem, 4vw, 2.5rem);
+            background: #ffffff;
+            border: 1px solid #d9e1e5;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(18, 59, 93, 0.08);
+            text-align: left;
+        }
+
+        .register-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem 1rem;
+        }
+
+        .register-field {
+            min-width: 0;
+        }
+
+        .register-field label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #123b5d;
+            font-weight: 600;
+        }
+
+        .register-field input {
+            width: 100%;
+            min-height: 48px;
+            padding: 0.7rem 0.8rem;
+            border: 1px solid #bdc8ce;
+            border-radius: 5px;
+            background: #ffffff;
+            color: #222222;
+            font: inherit;
+        }
+
+        .register-field input:focus-visible {
+            outline: 3px solid #8ed1c2;
+            outline-offset: 2px;
+            border-color: #247a78;
+        }
+
+        .register-terms,
+        .register-submit {
+            grid-column: 1 / -1;
+        }
+
+        .register-terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin: 0;
+        }
+
+        .register-terms input {
+            width: 1rem;
+            height: 1rem;
+            flex: 0 0 auto;
+            margin-top: 0.3rem;
+            accent-color: #247a78;
+        }
+
+        .register-terms label {
+            text-align: left;
+        }
+
+        .register-submit {
+            width: 100%;
+            border: 0;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .hero-image {
+            display: grid;
+            width: 100%;
+            min-width: 0;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+            padding: 0.75rem;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            min-width: 0;
+            min-height: 0;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .hero-image img:first-child {
+            grid-row: 1 / -1;
+        }
+
+        .vehicle-filters {
+            max-width: 1200px;
+            margin: 1.5rem auto 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.65rem;
+        }
+
+        .vehicle-filter {
+            padding: 0.55rem 1rem;
+            border: 1px solid #247a78;
+            border-radius: 999px;
+            background: #ffffff;
+            color: #123b5d;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .vehicle-filter:hover,
+        .vehicle-filter[aria-pressed="true"] {
+            background: #247a78;
+            color: #ffffff;
+        }
+
+        .vehicle-photo-button {
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: zoom-in;
+        }
+
+        .vehicle-photo-button img {
+            transition: transform 0.25s ease;
+        }
+
+        .vehicle-photo-button:hover img,
+        .vehicle-photo-button:focus-visible img {
+            transform: scale(1.04);
+        }
+
+        .vehicle-card[hidden] {
+            display: none;
+        }
+
+        .vehicle-dialog {
+            width: min(92vw, 900px);
+            max-width: none;
+            max-height: 90vh;
+            margin: auto;
+            padding: 1rem;
+            border: 0;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #222222;
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        .vehicle-dialog::backdrop {
+            background: rgba(18, 59, 93, 0.82);
+        }
+
+        .vehicle-dialog img {
+            display: block;
+            width: 100%;
+            max-height: 72vh;
+            object-fit: contain;
+            background: #f5f7f8;
+        }
+
+        .vehicle-dialog h2 {
+            margin: 0.75rem 0 0;
+            color: #123b5d;
+            text-align: left;
+            font-size: 1.25rem;
+        }
+
+        .dialog-close {
+            display: block;
+            margin: 0 0 0.75rem auto;
+            padding: 0.5rem 0.8rem;
+            border: 1px solid #bdc8ce;
+            border-radius: 5px;
+            background: #ffffff;
+            color: #123b5d;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .vehicle-filter,
+            .vehicle-photo-button img {
+                transition: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .register-form-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 1rem;
+            }
+
+            .vehicle-filters {
+                gap: 0.5rem;
+            }
+
+            .vehicle-filter {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <h1>DrivePNG Rentals</h1>
+            <nav aria-label="Main navigation">
+                <button class="menu-toggle" type="button" aria-controls="site-menu" aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="nav-links" id="site-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../products.html">Vehicles</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="#register" aria-current="page">Login/Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-hero hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <p class="eyebrow">Trusted transport solutions</p>
+                    <h2>Join DrivePNG Rentals</h2>
+                    <p>Create an account and get ready for your next drive.</p>
+                    <p>Sign up to manage your bookings and explore a range of reliable rental vehicles.</p>
+                    <a class="btn" href="#register">Register now</a>
+                </div>
+                <div class="hero-card hero-image" aria-label="DrivePNG Rentals vehicle showcase">
+                    <img src="../Pictures/Premium.jpg" alt="Premium rental car">
+                    <img src="../Pictures/Everyday%20cars.jpg" alt="Everyday rental car">
+                    <img src="../Pictures/Room%20for%20Everyone.jpg" alt="Spacious rental vehicle">
+                </div>
+            </div>
+        </section>
+
+        <section class="introduction container" id="about">
+            <h2>Start your journey with us</h2>
+            <p>Set up your DrivePNG Rentals account to make booking and managing your next rental simple.</p>
+        </section>
+
+        <section class="introduction container" id="register">
+            <h2>Create your account</h2>
+            <p>Enter your details below to register.</p>
+            <form class="register-form" action="#register" method="post">
+                <div class="register-form-grid">
+                    <div class="register-field">
+                        <label for="first-name">First name</label>
+                        <input type="text" id="first-name" name="first_name" autocomplete="given-name" required>
+                    </div>
+                    <div class="register-field">
+                        <label for="last-name">Last name</label>
+                        <input type="text" id="last-name" name="last_name" autocomplete="family-name" required>
+                    </div>
+                    <div class="register-field">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required>
+                    </div>
+                    <div class="register-field">
+                        <label for="phone">Phone number</label>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel">
+                    </div>
+                    <div class="register-field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" autocomplete="new-password" minlength="8" required>
+                    </div>
+                    <div class="register-field">
+                        <label for="confirm-password">Confirm password</label>
+                        <input type="password" id="confirm-password" name="confirm_password" autocomplete="new-password" minlength="8" required>
+                    </div>
+                    <p class="register-terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the terms and conditions.</label>
+                    </p>
+                    <button class="btn register-submit" type="submit">Create account</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="service-highlights" id="benefits">
+            <h2>Why rent with DrivePNG?</h2>
+            <div class="highlight-container">
+                <article class="highlight-card">
+                    <h3>Flexible bookings</h3>
+                    <p>Choose a vehicle that suits your plans and schedule.</p>
+                </article>
+                <article class="highlight-card">
+                    <h3>Vehicles for every trip</h3>
+                    <p>Find a comfortable option for everyday travel or a longer journey.</p>
+                </article>
+                <article class="highlight-card">
+                    <h3>Manage your rentals</h3>
+                    <p>Keep your booking details together with your customer account.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="featured-vehicles" id="vehicles">
+            <h2>Explore our vehicles</h2>
+            <div class="vehicle-filters" role="group" aria-label="Filter vehicles by type">
+                <button class="vehicle-filter" type="button" data-filter="all" aria-pressed="true">All vehicles</button>
+                <button class="vehicle-filter" type="button" data-filter="suv" aria-pressed="false">SUVs</button>
+                <button class="vehicle-filter" type="button" data-filter="sedan" aria-pressed="false">Sedans</button>
+                <button class="vehicle-filter" type="button" data-filter="utility" aria-pressed="false">Utility</button>
+                <button class="vehicle-filter" type="button" data-filter="premium" aria-pressed="false">Premium</button>
+            </div>
+            <p id="vehicle-results" role="status" aria-live="polite"></p>
+            <div class="vehicle-container">
+                <article class="vehicle-card" data-category="premium">
+                    <div class="vehicle-image">
+                        <button class="vehicle-photo-button" type="button" aria-label="View photo: Premium cars">
+                            <img src="../Pictures/Premium.jpg" alt="Premium rental car">
+                        </button>
+                    </div>
+                    <div class="vehicle-content">
+                        <h3>Premium cars</h3>
+                        <p>Enjoy a refined ride for special occasions and weekend escapes.</p>
+                    </div>
+                </article>
+                <article class="vehicle-card" data-category="sedan">
+                    <div class="vehicle-image">
+                        <button class="vehicle-photo-button" type="button" aria-label="View photo: Everyday cars">
+                            <img src="../Pictures/Everyday%20cars.jpg" alt="Everyday rental car">
+                        </button>
+                    </div>
+                    <div class="vehicle-content">
+                        <h3>Everyday cars</h3>
+                        <p>Find a practical vehicle for getting around town.</p>
+                    </div>
+                </article>
+                <article class="vehicle-card" data-category="suv">
+                    <div class="vehicle-image">
+                        <button class="vehicle-photo-button" type="button" aria-label="View photo: Room for everyone">
+                            <img src="../Pictures/Room%20for%20Everyone.jpg" alt="Spacious rental vehicle for everyone">
+                        </button>
+                    </div>
+                    <div class="vehicle-content">
+                        <h3>Room for everyone</h3>
+                        <p>Choose extra space for passengers, luggage, and longer trips.</p>
+                    </div>
+                </article>
+                <article class="vehicle-card" data-category="utility">
+                    <div class="vehicle-image">
+                        <button class="vehicle-photo-button" type="button" aria-label="View photo: Utility pickup">
+                            <img src="../Pictures/images.jpg" alt="Blue utility pickup truck">
+                        </button>
+                    </div>
+                    <div class="vehicle-content">
+                        <h3>Utility pickup</h3>
+                        <p>A rugged option for work, equipment, and outdoor travel.</p>
+                    </div>
+                </article>
+                <article class="vehicle-card" data-category="suv">
+                    <div class="vehicle-image">
+                        <button class="vehicle-photo-button" type="button" aria-label="View photo: Family SUV">
+                            <img src="../Pictures/images%20(1).jpg" alt="Gray SUV shown in profile">
+                        </button>
+                    </div>
+                    <div class="vehicle-content">
+                        <h3>Family SUV</h3>
+                        <p>Comfortable space for passengers and everyday journeys.</p>
+                    </div>
+                </article>
+                <article class="vehicle-card" data-category="sedan">
+                    <div class="vehicle-image">
+                        <button class="vehicle-photo-button" type="button" aria-label="View photo: Compact sedan">
+                            <img src="../Pictures/images%20(2).jpg" alt="White compact sedan">
+                        </button>
+                    </div>
+                    <div class="vehicle-content">
+                        <h3>Compact sedan</h3>
+                        <p>An easy-to-drive choice for city trips and daily errands.</p>
+                    </div>
+                </article>
+                <article class="vehicle-card" data-category="utility">
+                    <div class="vehicle-image">
+                        <button class="vehicle-photo-button" type="button" aria-label="View photo: Four-wheel-drive utility vehicle">
+                            <img src="../Pictures/images%20(3).jpg" alt="White four-wheel-drive utility vehicle">
+                        </button>
+                    </div>
+                    <div class="vehicle-content">
+                        <h3>Four-wheel-drive</h3>
+                        <p>Extra capability for longer trips and rougher routes.</p>
+                    </div>
+                </article>
+                <article class="vehicle-card" data-category="sedan">
+                    <div class="vehicle-image">
+                        <button class="vehicle-photo-button" type="button" aria-label="View photo: Comfort sedan">
+                            <img src="../Pictures/images%20(4).jpg" alt="White comfort sedan">
+                        </button>
+                    </div>
+                    <div class="vehicle-content">
+                        <h3>Comfort sedan</h3>
+                        <p>A spacious sedan for relaxed drives and longer journeys.</p>
+                    </div>
+                </article>
+                <article class="vehicle-card" data-category="suv">
+                    <div class="vehicle-image">
+                        <button class="vehicle-photo-button" type="button" aria-label="View photo: Electric SUV">
+                            <img src="../Pictures/images%20(5).jpg" alt="Gray electric SUV beside a lake">
+                        </button>
+                    </div>
+                    <div class="vehicle-content">
+                        <h3>Electric SUV</h3>
+                        <p>A modern electric option for comfortable open-road travel.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <dialog class="vehicle-dialog" aria-labelledby="vehicle-dialog-title">
+            <form method="dialog">
+                <button class="dialog-close" type="submit">Close photo</button>
+            </form>
+            <img src="" alt="" id="vehicle-dialog-image">
+            <h2 id="vehicle-dialog-title"></h2>
+        </dialog>
+
+        <section class="home-cta">
+            <h2>Ready for your next trip?</h2>
+            <p>Create your account and start planning your drive.</p>
+            <a class="btn" href="#register">Register today</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 DrivePNG Rentals. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const filterButtons = document.querySelectorAll('.vehicle-filter');
+        const vehicleCards = document.querySelectorAll('.vehicle-card');
+        const vehicleResults = document.querySelector('#vehicle-results');
+        const vehicleDialog = document.querySelector('.vehicle-dialog');
+        const dialogImage = document.querySelector('#vehicle-dialog-image');
+        const dialogTitle = document.querySelector('#vehicle-dialog-title');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedCategory = button.dataset.filter;
+                let visibleCount = 0;
+
+                filterButtons.forEach(filterButton => {
+                    filterButton.setAttribute('aria-pressed', String(filterButton === button));
+                });
+
+                vehicleCards.forEach(card => {
+                    const isVisible = selectedCategory === 'all' || card.dataset.category === selectedCategory;
+                    card.hidden = !isVisible;
+                    visibleCount += Number(isVisible);
+                });
+
+                vehicleResults.textContent = `${visibleCount} ${visibleCount === 1 ? 'vehicle' : 'vehicles'} shown`;
+            });
+        });
+
+        document.querySelectorAll('.vehicle-photo-button').forEach(photoButton => {
+            photoButton.addEventListener('click', () => {
+                const image = photoButton.querySelector('img');
+                const title = photoButton.closest('.vehicle-card').querySelector('h3').textContent;
+
+                dialogImage.src = image.src;
+                dialogImage.alt = image.alt;
+                dialogTitle.textContent = title;
+                vehicleDialog.showModal();
+            });
+        });
+
+        vehicleDialog.addEventListener('click', event => {
+            if (event.target === vehicleDialog) {
+                vehicleDialog.close();
+            }
+        });
+    </script>
+</body>
+</html>
