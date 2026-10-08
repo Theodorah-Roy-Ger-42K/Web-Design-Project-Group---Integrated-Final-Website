@@ -59,11 +59,17 @@ nav {
     justify-content: space-between;
 }
 
-nav > a {
-    color: #ffffff;
-    font-size: 1.5rem;
-    font-weight: bold;
+.brand {
+    display: flex;
+    align-items: center;
 }
+
+.brand-logo {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+
 
 nav ul {
     display: flex;
@@ -445,6 +451,12 @@ footer {
    ========================================= */
 
 @media (max-width: 480px) {
+    .brand-logo {
+    width: 125px;
+}
+nav {
+    flex-wrap: wrap;
+}
      .menu-toggle {
         display: block;
 
