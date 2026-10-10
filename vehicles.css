@@ -1,16 +1,354 @@
+/* =========================================
+   DRIVEPNG RENTALS
+   PHASE 4 - CSS STYLING + VEHICLES PAGE INTEGRATED
+   ========================================= */
+
+/* =========================================
+   1. CSS RESET & FOUNDATION
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #ffffff;
+    color: #222222;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+}
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #8ed1c2;
+    outline-offset: 3px;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   2. HEADER & NAVIGATION
+   ========================================= */
+
+header {
+    background-color: #123b5d;
+    color: #ffffff;
+    padding: 1rem 5%;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+nav ul a {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+nav ul a:hover {
+   color: #ffffff;
+}
+
+/* =========================================
+   3. MAIN CONTENT
+   ========================================= */
+
+main {
+    width: 100%;
+}
+
+section {
+    padding: 4rem 5%;
+}
+
+section h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* =========================================
+   4. HERO SECTION
+   ========================================= */
+
+.hero {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    background-color: #eaf5f5;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    line-height: 1.2;
+    color: #123b5d;
+}
+
+.hero-content p:first-of-type {
+    margin-bottom: 0.75rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #247a78;
+}
+
+.hero-content p:nth-of-type(2) {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.hero-image {
+    flex: 1;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d6e7e8;
+    border-radius: 12px;
+}
+
+/* =========================================
+   5. BUTTON / CTA
+   ========================================= */
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #247a78;
+    color: #ffffff;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #1b5e5c;
+}
+
+/* =========================================
+   6. INTRODUCTION
+   ========================================= */
+
+.introduction {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.introduction h2 {
+    color: #123b5d;
+}
+
+.introduction p {
+    max-width: 800px;
+    margin: 0 auto 1rem;
+}
+
+/* =========================================
+   7. SERVICE HIGHLIGHTS
+   ========================================= */
+
+.service-highlights {
+    background-color: #f5f7f8;
+}
+
+.highlight-container {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.highlight-card {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.highlight-card h3 {
+    margin-bottom: 0.75rem;
+    color: #247a78;
+}
+
+/* =========================================
+   8. FEATURED VEHICLES
+   ========================================= */
+
+.featured-vehicles {
+    background-color: #ffffff;
+}
+
+.vehicle-container {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.vehicle-card {
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.vehicle-image {
+    height: 220px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e7eeee;
+}
+
+.vehicle-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.vehicle-content {
+    padding: 1.5rem;
+}
+
+.vehicle-content h3 {
+    margin-bottom: 0.75rem;
+    color: #123b5d;
+}
+
+/* =========================================
+   9. HOME PAGE CTA
+   ========================================= */
+
+.home-cta {
+    text-align: center;
+    background-color: #eaf5f5;
+}
+
+.home-cta h2 {
+    color: #123b5d;
+}
+
+.home-cta p {
+    margin-bottom: 1.5rem;
+}
+
+/* =========================================
+   10. FOOTER
+   ========================================= */
+
+footer {
+    padding: 2.5rem 5%;
+    background-color: #123b5d;
+    color: #ffffff;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content h2 {
+    margin-bottom: 0.5rem;
+}
+
+.footer-content > p {
+    margin-bottom: 1rem;
+}
+
+.footer-content nav {
+    display: block;
+}
+
+.footer-content nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-content nav a {
+    color: #ffffff;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* =========================================
+   11. VEHICLES PAGE - INTEGRATED TO MATCH THEME
+   ========================================= */
+
 .vehicles-page {
-  padding: 30px 5%;
-  background: #f5f6f7;
+  padding: 4rem 5%;
+  background: #f5f7f8;
 }
 
 .vehicles-header {
   text-align: center;
   margin-bottom: 25px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .vehicles-header h1 {
   font-size: 2.2rem;
   margin-bottom: 5px;
+  color: #123b5d;
+}
+
+.vehicles-header p {
+  color: #555;
 }
 
 .filter-bar {
@@ -22,43 +360,58 @@
 }
 
 .filter-bar button {
-  padding: 8px 16px;
-  border: 1px solid #333;
-  background: white;
+  padding: 8px 18px;
+  border: 1px solid #123b5d;
+  background: #ffffff;
+  color: #123b5d;
   cursor: pointer;
   border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.filter-bar button:hover {
+  background: #eaf5f5;
 }
 
 .filter-bar button.active {
-  background: #111;
+  background: #247a78;
   color: white;
+  border-color: #247a78;
 }
 
 .vehicle-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.vehicle-card {
+/* This re-uses your main vehicle-card style */
+.vehicle-grid .vehicle-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border: 1px solid #dddddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.vehicle-card img {
+.vehicle-grid .vehicle-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  display: block;
+  background-color: #e7eeee;
 }
 
 .card-content {
-  padding: 15px;
+  padding: 1.5rem;
 }
 
 .card-content h3 {
   margin: 5px 0;
+  color: #123b5d;
 }
 
 .type {
@@ -68,7 +421,7 @@
 
 .price {
   font-weight: bold;
-  color: #0a7d2e;
+  color: #247a78;
   margin: 8px 0;
   font-size: 1.1rem;
 }
@@ -77,20 +430,66 @@
   padding-left: 18px;
   margin: 10px 0;
   font-size: 0.9rem;
+  list-style: disc;
+  color: #333;
 }
 
-.btn {
+.card-content .btn {
   display: inline-block;
   margin-top: 10px;
-  padding: 8px 18px;
-  background: #ff6600;
+  padding: 0.8rem 1.5rem;
+  background: #247a78;
   color: white;
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
 }
 
-.filter-bar button.active {
-  background: black;
-  color: white;
+.card-content .btn:hover {
+  background: #1b5e5c;
+}
+
+/* =========================================
+   PHASE 5 - RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 768px) {
+    header { padding: 1rem 4%; }
+    nav { flex-direction: column; gap: 1rem; }
+    nav ul { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    section { padding: 3rem 4%; }
+    .hero { flex-direction: column; text-align: center; }
+    .hero-content { max-width: 700px; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-image { width: 100%; min-height: 280px; }
+    .highlight-container { grid-template-columns: repeat(2, 1fr); }
+    .highlight-card:last-child { grid-column: 1 / -1; justify-self: center; width: 50%; }
+    .vehicle-container { grid-template-columns: repeat(2, 1fr); }
+    .vehicle-card:last-child { grid-column: 1 / -1; justify-self: center; width: 50%; }
+}
+
+@media (max-width: 480px) {
+    .brand-logo { width: 125px; }
+    nav { flex-wrap: wrap; flex-direction: row; justify-content: space-between; align-items: center; }
+    .menu-toggle { display: block; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 0.75rem; text-align: center; }
+    .nav-links.active { display: flex; }
+    header { padding: 1rem 5%; }
+    nav > a { font-size: 1.3rem; }
+    nav ul { flex-direction: column; gap: 0.75rem; }
+    section { padding: 2.5rem 5%; }
+    .hero { min-height: auto; }
+    .hero-content h1 { font-size: 2.1rem; }
+    .hero-content p:first-of-type { font-size: 1.2rem; }
+    .hero-content p:nth-of-type(2) { font-size: 1rem; }
+    .hero-image { min-height: 220px; }
+    .btn { padding: 0.75rem 1.2rem; }
+    .highlight-container { grid-template-columns: 1fr; }
+    .highlight-card { padding: 1.5rem; }
+    .highlight-card:last-child { width: 100%; }
+    .vehicle-container { grid-template-columns: 1fr; }
+    .vehicle-card:last-child { width: 100%; }
+    .vehicle-image { min-height: 180px; }
+    .vehicle-content { padding: 1.25rem; }
+    footer { padding: 2rem 5%; }
 }
