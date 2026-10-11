@@ -26,6 +26,25 @@
       <p>Choose your ride for Lae city or Highlands Highway</p>
     </section>
 
+    <div class="search-bar" style="text-align:center; margin-bottom:20px;">
+  <input type="text" id="searchInput" placeholder="Search vehicles..." />
+</div>
+
+   <div class="controls-bar" style="text-align:center; margin:20px 0;">
+  <label for="categorySelect">Filter by type:</label>
+  <select id="categorySelect">
+    <option value="all">All</option>
+    <option value="4x4">4x4 / Offroad</option>
+    <option value="ute">Ute</option>
+    <option value="suv">SUV</option>
+    <option value="sedan">Sedan</option>
+  </select>
+
+  <label style="margin-left:15px;">
+    <input type="checkbox" id="cheapOnly"> Show vehicles under K400/day
+  </label>
+</div>
+ 
     <div class="filter-bar">
       <button data-filter="all" class="active">All Vehicles</button>
       <button data-filter="4x4">4x4 / Offroad</button>
@@ -33,7 +52,7 @@
       <button data-filter="suv">SUV</button>
       <button data-filter="sedan">Sedan</button>
     </div>
-
+  
     <section class="vehicle-grid">
       
       <article class="vehicle-card" data-category="4x4 ute">
