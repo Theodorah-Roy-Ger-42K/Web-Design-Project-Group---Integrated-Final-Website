@@ -94,3 +94,16 @@
   background: black;
   color: white;
 }
+
+.no-results {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  background: #ffecec;
+  color: #d8000c;
+  border: 1px solid #d8000c;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
