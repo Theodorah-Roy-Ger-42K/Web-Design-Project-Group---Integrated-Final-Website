@@ -388,13 +388,15 @@ footer {
   margin: 0 auto;
 }
 
-/* This re-uses your main vehicle-card style */
 .vehicle-grid .vehicle-card {
   background: white;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #dddddd;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+
 }
 
 .vehicle-grid .vehicle-card img {
@@ -407,6 +409,9 @@ footer {
 
 .card-content {
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .card-content h3 {
@@ -432,17 +437,19 @@ footer {
   font-size: 0.9rem;
   list-style: disc;
   color: #333;
+  flex: 1;
 }
 
 .card-content .btn {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: auto;
   padding: 0.8rem 1.5rem;
   background: #247a78;
   color: white;
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
+  align-self: flex-start;
 }
 
 .card-content .btn:hover {
