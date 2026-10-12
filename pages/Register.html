@@ -6,260 +6,49 @@
     <meta name="theme-color" content="#123b5d">
     <meta name="description" content="Create a DrivePNG Rentals account to explore vehicles and manage your rentals.">
     <title>Create an Account | DrivePNG Rentals</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="../css/register.css">
     <script src="../js/main.js" defer></script>
-    <style>
-        .register-form {
-            width: min(100%, 720px);
-            margin: 2rem auto 0;
-            padding: clamp(1.25rem, 4vw, 2.5rem);
-            background: #ffffff;
-            border: 1px solid #d9e1e5;
-            border-radius: 8px;
-            box-shadow: 0 4px 16px rgba(18, 59, 93, 0.08);
-            text-align: left;
-        }
 
-        .register-form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1.25rem 1rem;
-        }
-
-        .register-field {
-            min-width: 0;
-        }
-
-        .register-field label {
-            display: block;
-            margin-bottom: 0.4rem;
-            color: #123b5d;
-            font-weight: 600;
-        }
-
-        .register-field input {
-            width: 100%;
-            min-height: 48px;
-            padding: 0.7rem 0.8rem;
-            border: 1px solid #bdc8ce;
-            border-radius: 5px;
-            background: #ffffff;
-            color: #222222;
-            font: inherit;
-        }
-
-        .register-field input:focus-visible {
-            outline: 3px solid #8ed1c2;
-            outline-offset: 2px;
-            border-color: #247a78;
-        }
-
-        .register-terms,
-        .register-submit {
-            grid-column: 1 / -1;
-        }
-
-        .register-terms {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.6rem;
-            margin: 0;
-        }
-
-        .register-terms input {
-            width: 1rem;
-            height: 1rem;
-            flex: 0 0 auto;
-            margin-top: 0.3rem;
-            accent-color: #247a78;
-        }
-
-        .register-terms label {
-            text-align: left;
-        }
-
-        .register-submit {
-            width: 100%;
-            border: 0;
-            font: inherit;
-            cursor: pointer;
-        }
-
-        .hero-image {
-            display: grid;
-            width: 100%;
-            min-width: 0;
-            grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-            grid-template-rows: repeat(2, minmax(0, 1fr));
-            gap: 0.75rem;
-            padding: 0.75rem;
-            overflow: hidden;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            min-width: 0;
-            min-height: 0;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .hero-image img:first-child {
-            grid-row: 1 / -1;
-        }
-
-        .vehicle-filters {
-            max-width: 1200px;
-            margin: 1.5rem auto 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.65rem;
-        }
-
-        .vehicle-filter {
-            padding: 0.55rem 1rem;
-            border: 1px solid #247a78;
-            border-radius: 999px;
-            background: #ffffff;
-            color: #123b5d;
-            font: inherit;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        .vehicle-filter:hover,
-        .vehicle-filter[aria-pressed="true"] {
-            background: #247a78;
-            color: #ffffff;
-        }
-
-        .vehicle-photo-button {
-            display: block;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            border: 0;
-            background: transparent;
-            cursor: zoom-in;
-        }
-
-        .vehicle-photo-button img {
-            transition: transform 0.25s ease;
-        }
-
-        .vehicle-photo-button:hover img,
-        .vehicle-photo-button:focus-visible img {
-            transform: scale(1.04);
-        }
-
-        .vehicle-card[hidden] {
-            display: none;
-        }
-
-        .vehicle-dialog {
-            width: min(92vw, 900px);
-            max-width: none;
-            max-height: 90vh;
-            margin: auto;
-            padding: 1rem;
-            border: 0;
-            border-radius: 8px;
-            background: #ffffff;
-            color: #222222;
-            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
-        }
-
-        .vehicle-dialog::backdrop {
-            background: rgba(18, 59, 93, 0.82);
-        }
-
-        .vehicle-dialog img {
-            display: block;
-            width: 100%;
-            max-height: 72vh;
-            object-fit: contain;
-            background: #f5f7f8;
-        }
-
-        .vehicle-dialog h2 {
-            margin: 0.75rem 0 0;
-            color: #123b5d;
-            text-align: left;
-            font-size: 1.25rem;
-        }
-
-        .dialog-close {
-            display: block;
-            margin: 0 0 0.75rem auto;
-            padding: 0.5rem 0.8rem;
-            border: 1px solid #bdc8ce;
-            border-radius: 5px;
-            background: #ffffff;
-            color: #123b5d;
-            font: inherit;
-            cursor: pointer;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .vehicle-filter,
-            .vehicle-photo-button img {
-                transition: none;
-            }
-        }
-
-        @media (max-width: 520px) {
-            .register-form-grid {
-                grid-template-columns: minmax(0, 1fr);
-                gap: 1rem;
-            }
-
-            .vehicle-filters {
-                gap: 0.5rem;
-            }
-
-            .vehicle-filter {
-                padding: 0.5rem 0.75rem;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
-        <div class="container header-inner">
-            <h1>DrivePNG Rentals</h1>
-            <nav aria-label="Main navigation">
-                <button class="menu-toggle" type="button" aria-controls="site-menu" aria-expanded="false">
-                    Menu
-                </button>
-                <ul class="nav-links" id="site-menu">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="vehicles.html">Vehicles</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="Register.html" aria-current="page">Login/Register</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav aria-label="Main navigation">
+            <a href="../index.html" class="brand" aria-label="DrivePNG home page">
+                <img src="../images/drivepng-logo.png" alt="DrivePNG Rentals" class="brand-logo">
+            </a>
+
+            <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="Register.html" aria-current="page">Login/Register</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <section class="about-hero hero">
-            <div class="container hero-content">
+        <section class="about-hero register-hero">
+            <div class="about-hero__content">
                 <div class="hero-text">
                     <p class="eyebrow">Trusted transport solutions</p>
-                    <h2>Join DrivePNG Rentals</h2>
+                    <h1>Join DrivePNG Rentals</h1>
                     <p>Create an account and get ready for your next drive.</p>
                     <p>Sign up to manage your bookings and explore a range of reliable rental vehicles.</p>
                     <a class="btn" href="#register">Register now</a>
                 </div>
-                <div class="hero-card hero-image" aria-label="DrivePNG Rentals vehicle showcase">
-                    <img src="../images/drivepng-hero.png" alt="Premium rental car">
-                    <img src="../images/toyota-land-cruiser-79.jpg" alt="Everyday rental car">
-                    <img src="../images/toyota-hilux.jpg" alt="Spacious rental vehicle">
+            </div>
+            <div class="about-hero__image">
+                <div class="register-hero__gallery" aria-label="DrivePNG Rentals vehicle showcase">
+                    <img src="../images/drivepng-hero.png" alt="A lineup of DrivePNG rental vehicles">
+                    <img src="../images/toyota-land-cruiser-79.jpg" alt="Toyota Land Cruiser 79 Series ready for an overland trip">
+                    <img src="../images/toyota-hilux.jpg" alt="Toyota Hilux rental vehicle">
                 </div>
             </div>
         </section>
@@ -431,8 +220,8 @@
                         </button>
                     </div>
                     <div class="vehicle-content">
-                        <h3>Electric SUV</h3>
-                        <p>A modern electric option for comfortable open-road travel.</p>
+                        <h3>Road-ready SUV</h3>
+                        <p>A comfortable SUV for open-road travel and everyday journeys.</p>
                     </div>
                 </article>
             </div>
@@ -454,53 +243,21 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 DrivePNG Rentals. All rights reserved.</p>
+        <div class="footer-content">
+            <h2>DrivePNG Rentals</h2>
+            <p>Your Journey. Our Drive.</p>
+            <nav aria-label="Footer navigation">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="vehicles.html">Vehicles</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="Register.html" aria-current="page">Login/Register</a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
 
-    <script>
-        const filterButtons = document.querySelectorAll('.vehicle-filter');
-        const vehicleCards = document.querySelectorAll('.vehicle-card');
-        const vehicleResults = document.querySelector('#vehicle-results');
-        const vehicleDialog = document.querySelector('.vehicle-dialog');
-        const dialogImage = document.querySelector('#vehicle-dialog-image');
-        const dialogTitle = document.querySelector('#vehicle-dialog-title');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const selectedCategory = button.dataset.filter;
-                let visibleCount = 0;
-
-                filterButtons.forEach(filterButton => {
-                    filterButton.setAttribute('aria-pressed', String(filterButton === button));
-                });
-
-                vehicleCards.forEach(card => {
-                    const isVisible = selectedCategory === 'all' || card.dataset.category === selectedCategory;
-                    card.hidden = !isVisible;
-                    visibleCount += Number(isVisible);
-                });
-
-                vehicleResults.textContent = `${visibleCount} ${visibleCount === 1 ? 'vehicle' : 'vehicles'} shown`;
-            });
-        });
-
-        document.querySelectorAll('.vehicle-photo-button').forEach(photoButton => {
-            photoButton.addEventListener('click', () => {
-                const image = photoButton.querySelector('img');
-                const title = photoButton.closest('.vehicle-card').querySelector('h3').textContent;
-
-                dialogImage.src = image.src;
-                dialogImage.alt = image.alt;
-                dialogTitle.textContent = title;
-                vehicleDialog.showModal();
-            });
-        });
-
-        vehicleDialog.addEventListener('click', event => {
-            if (event.target === vehicleDialog) {
-                vehicleDialog.close();
-            }
-        });
-    </script>
+    <script src="../js/register.js"></script>
 </body>
 </html>

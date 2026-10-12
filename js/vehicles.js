@@ -8,9 +8,9 @@ const cheapOnly = document.getElementById('cheapOnly');
 // Create "no results" message dynamically
 const noResults = document.createElement('p');
 noResults.id = 'no-results';
+noResults.setAttribute('role', 'status');
+noResults.setAttribute('aria-live', 'polite');
 noResults.textContent = 'No matching results found.';
-noResults.style.textAlign = 'center';
-noResults.style.display = 'none';
 document.querySelector('.vehicles-page').appendChild(noResults);
 
 // Unified filtering function
@@ -24,7 +24,7 @@ function applyFilters() {
 
   vehicleCards.forEach(card => {
     const cardCategory = card.dataset.category.toLowerCase();
-    const title = card.querySelector('h3').textContent.toLowerCase();
+    const title = card.querySelector('h2').textContent.toLowerCase();
     const type = card.querySelector('.type').textContent.toLowerCase();
     const priceText = card.querySelector('.price').textContent;
     const priceValue = parseInt(priceText.replace(/[^0-9]/g, ''), 10);
@@ -48,8 +48,12 @@ function applyFilters() {
 // Event listeners
 filterButtons.forEach(button => {
   button.addEventListener('click', () => {
-    filterButtons.forEach(btn => btn.classList.remove('active'));
+    filterButtons.forEach(btn => {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-pressed', 'false');
+    });
     button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
     applyFilters();
   });
 });
